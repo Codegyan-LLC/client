@@ -1,5 +1,5 @@
 {
-    "name": "codegyan-llc/client",
+    "name": "codegyan/client",
     "description": "Codegyan SDK for interacting with the Codegyan API",
     "keywords": ["php", "codegyan", "sdk", "codex", "api", "client", "toolx"],
     "license": "MIT",
