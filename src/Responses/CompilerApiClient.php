@@ -29,7 +29,7 @@ final class CompilerApiClient implements CompilerContracts {
      * @return mixed The compiled result.
      */
     public function compile(string $lang, string $code) {
-        $url = 'https://api.codegyan.in/v1/compiler/compile';
+        $url = 'https://api.codegyan.in/v2/compiler/compile';
         $headers = [
             'APIKey: ' . $this->client->getApiKey(),
             'ClientID: ' . $this->client->getClientId(),
