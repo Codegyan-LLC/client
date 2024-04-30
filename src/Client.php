@@ -1,20 +1,13 @@
 <?php
-
 namespace Codegyan;
 
-use Codegyan\Contracts\ClientContracts; // Ensure correct namespace
+use Codegyan\Contracts\ClientContracts;
+use Codegyan\Responses\CompilerApiClient;
 
-// Include the ClientContracts.php file
-// require_once 'src/Contracts/ClientContracts.php';
-
-
-/**
- * Class Client
- * Represents the client for Codegyan API.
- */
 final class Client implements ClientContracts {
     private $apiKey; // The API key for authentication
     private $clientId; // The client ID for identification
+    private $compilerApiClient; // The CompilerApiClient instance
 
     /**
      * Constructor.
@@ -43,5 +36,20 @@ final class Client implements ClientContracts {
      */
     public function getClientId(): string {
         return $this->clientId;
+    }
+
+    /**
+     * Magic method to lazily instantiate the CompilerApiClient.
+     *
+     * @param string $name The name of the property being accessed.
+     * @return mixed The value of the property.
+     */
+    public function __get($name) {
+        if ($name === 'compilerApiClient') {
+            if (!$this->compilerApiClient) {
+                $this->compilerApiClient = new CompilerApiClient($this);
+            }
+            return $this->compilerApiClient;
+        }
     }
 }
