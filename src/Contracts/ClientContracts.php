@@ -21,4 +21,4 @@ interface ClientContracts {
      * @return string The Client ID.
      */
     public function getClientId(): string;
-}
+} 

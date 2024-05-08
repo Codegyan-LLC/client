@@ -1,5 +1,5 @@
 <?php
-namespace Codegyan;
+namespace Codegyan; 
 
 use Codegyan\Client;
 

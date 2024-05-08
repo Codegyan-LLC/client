@@ -1,6 +1,6 @@
 <?php
 
-namespace Codegyan\Contracts\Resources;
+namespace Codegyan\Contracts\Resources; 
 
 /**
  * Interface CompilerContracts

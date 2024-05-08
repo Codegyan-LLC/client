@@ -3,11 +3,13 @@ namespace Codegyan;
 
 use Codegyan\Contracts\ClientContracts;
 use Codegyan\Responses\CompilerApiClient;
+use Codegyan\Responses\ToolsApiClient;
 
 final class Client implements ClientContracts {
     private $apiKey; // The API key for authentication
     private $clientId; // The client ID for identification
     private $compilerApiClient; // The CompilerApiClient instance
+    private $toolsApiClient; // The ToolsApiClient instance
 
     /**
      * Constructor.
@@ -50,6 +52,13 @@ final class Client implements ClientContracts {
                 $this->compilerApiClient = new CompilerApiClient($this);
             }
             return $this->compilerApiClient;
+        }else{
+            if ($name === 'toolsApiClient') {
+                if (!$this->toolsApiClient) {
+                    $this->toolsApiClient = new ToolsApiClient($this);
+                }
+            return $this->toolsApiClient;
+            }
         }
     }
 }
