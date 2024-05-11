@@ -25,6 +25,9 @@
             "Tests\\": "tests/"
         }
     },
+    "scripts": {
+        "test:unit": "phpunit"
+    },
     "minimum-stability": "dev",
     "prefer-stable": true
 } 
