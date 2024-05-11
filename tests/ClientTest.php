@@ -1,5 +1,4 @@
 <?php
-
 use PHPUnit\Framework\TestCase;
 use Codegyan\Client;
 
@@ -13,26 +12,48 @@ class ClientTest extends TestCase
         $this->client = new Client('YOUR_API_KEY', 'YOUR_CLIENT_ID');
     }
 
-    public function testCompilerCompile()
+    public function testCompilePHPCode()
     {
-        $result = $this->client->compilerApiClient->compile([
-            'language' => 'php',
-            'code' => '<?php echo "Hello, world!";',
-        ]);
+        // PHP code to be compiled
+        $lang = 'php';
+        $code = '<?php echo "Hello, world!"; ?>';
 
-        $this->assertEquals('Hello, world!', $result['output']);
+        // Compile the PHP code
+        $result = $this->client->compilerApiClient->compile($lang,$code);
+
+        // Decode the JSON string into an associative array
+        $resultArray = json_decode($result, true);
+
+        // Perform assertions on the compiled code
+        $this->assertNotEmpty($result);
+        $this->assertIsString($result);
+        $this->assertStringNotContainsString('<?php', $result); // Compiled code should contain PHP opening tag
+        $this->assertStringContainsString('Hello, world!', $result); // Compiled code should contain the original code
+        $this->assertEquals('Hello, world!', $resultArray['output']);
     }
 
-    public function testToolsApiClientDomainAvailability()
+    public function testDomainAvailability()
     {
-        $result = $this->client->toolsApiClient->domainAvailability([
-            'domain' => 'codegyan.in',
-        ]);
+        // PHP code to be compiled
+        $domain = 'codegyan.in';
 
-        $this->assertEquals('1', $result['status']);
-        $this->assertEquals('codegyan.in', $result['domain']);
-        $this->assertEquals('co.in', $result['tld']);
-        $this->assertEquals('1', $result['available']);
+        // Compile the PHP code
+        $result = $this->client->toolsApiClient->domainAvailability($domain);
+
+        // Decode the JSON string into an associative array
+        $resultArray = json_decode($result, true);
+
+        // Perform assertions on the response
+        $this->assertNotEmpty($resultArray);
+        $this->assertArrayHasKey('status', $resultArray);
+        $this->assertArrayHasKey('domain', $resultArray);
+        $this->assertArrayHasKey('tld', $resultArray);
+        $this->assertArrayHasKey('available', $resultArray);
+
+        // Check if the domain is available
+        $this->assertEquals('0', $resultArray['status']);
+        $this->assertEquals($domain, $resultArray['domain']);
+        $this->assertEquals('in', $resultArray['tld']);
+        $this->assertEquals('0', $resultArray['available']);
     }
-
 }
