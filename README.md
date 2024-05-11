@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/codegyan/client/main/art/code.png" width="600" alt="Codegyan PHP">
+    <img src="https://github.com/Codegyan-LLC/client/blob/main/art/code.png" width="600" alt="Codegyan PHP">
     <p align="center">
         <a href="https://github.com/codegyan/client/actions"><img alt="GitHub Workflow Status (main)" src="https://img.shields.io/github/actions/workflow/status/codegyan/client/tests.yml?branch=main&label=tests&style=round-square"></a>
         <a href="https://packagist.org/packages/codegyan/client"><img alt="Total Downloads" src="https://img.shields.io/packagist/dt/codegyan/client"></a>
