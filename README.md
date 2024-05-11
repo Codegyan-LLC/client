@@ -1,10 +1,11 @@
 <p align="center">
     <img src="https://github.com/Codegyan-LLC/client/blob/main/art/code.png" width="600" alt="Codegyan PHP">
     <p align="center">
-        <a href="https://github.com/codegyan/client/actions"><img alt="GitHub Workflow Status (main)" src="https://img.shields.io/github/actions/workflow/status/codegyan/client/tests.yml?branch=main&label=tests&style=round-square"></a>
+        <a href="https://github.com/Codegyan-LLC/client/actions"><img alt="GitHub Workflow Status (main)" src="https://img.shields.io/github/actions/workflow/status/Codegyan-LLC/client/tests.yml?branch=main&label=tests&style=round-square"></a>
         <a href="https://packagist.org/packages/codegyan/client"><img alt="Total Downloads" src="https://img.shields.io/packagist/dt/codegyan/client"></a>
         <a href="https://packagist.org/packages/codegyan/client"><img alt="Latest Version" src="https://img.shields.io/packagist/v/codegyan/client"></a>
-        <a href="https://packagist.org/packages/codegyan/client"><img alt="License" src="https://img.shields.io/github/license/codegyan/client"></a>
+        <a href="https://www.php.net/"><img alt="PHP Version" src="https://img.shields.io/badge/php-%5E8.1.0-yellow"></a>
+        <a href="https://packagist.org/packages/codegyan/client"><img alt="License" src="https://img.shields.io/packagist/l/codegyan/client"></a>
     </p>
 </p>
 
