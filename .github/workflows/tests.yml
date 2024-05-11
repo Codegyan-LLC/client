@@ -1,39 +1,29 @@
-name: Tests
+name: Run Tests
 
-on: ['push', 'pull_request']
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  ci:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: true
-      matrix:
-        os: [ubuntu-latest]
-        php: [8.1, 8.2, 8.3]
-        dependency-version: [prefer-lowest, prefer-stable]
-
-    name: Tests P${{ matrix.php }} - ${{ matrix.os }} - ${{ matrix.dependency-version }}
+  test:
+    name: Run PHPUnit Tests
+    runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
 
-    - name: Cache dependencies
-      uses: actions/cache@v1
-      with:
-        path: ~/.composer/cache/files
-        key: dependencies-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
+      - name: Install Composer Dependencies
+        run: composer install --no-interaction --no-ansi --no-progress --no-scripts
 
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: ${{ matrix.php }}
-        extensions: dom, mbstring, zip
-        coverage: none
-
-    - name: Install Composer dependencies
-      run: composer update --${{ matrix.dependency-version }} --no-interaction --prefer-dist
-
-    - name: Unit Tests
-      run: composer test:unit
+      - name: Run PHPUnit Tests
+        run: vendor/bin/phpunit
