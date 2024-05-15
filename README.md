@@ -58,6 +58,13 @@ try {
 ```
 
 ## Usage
+Before using the Pakage, you need to obtain an API key and client ID from Codegyan. Follow these steps to get your API credentials:
+
+1. **Sign Up/Login**: If you don't have an account, sign up for a [Codegyan account](https://codegyan.in/account/signup.php). If you already have an account, log in to your dashboard.
+
+2. **Get Credentials**: Once logged in, navigate to the [Developer Console](https://developer.codegyan.in/) or API settings in your account dashboard. Here, you will find your API key and client ID. Copy these credentials and use them when initializing the Pakage in your code.
+
+
 ### `Compiler` Resource
 
 The Compiler resource allows you to compile code snippets. Here's an example of how to use it:
